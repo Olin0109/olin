@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olin Zheng — Product Manager</title>
+<meta name="description" content="Olin Zheng — Product Manager. Growth, overseas card games, AI content. 产品经理 · 增长 · 海外棋牌 · AI 内容。">
+<style>
+  :root{
+    --paper:#f6f3ee;
+    --paper-2:#fbf9f5;
+    --ink:#221f1b;
+    --sub:#615b52;
+    --faint:#9a9389;
+    --line:#e3ddd2;
+    --clay:#a8482a;
+    --clay-soft:#f0e2da;
+    --gold:#e0b15e;
+    --felt-1:#10221b;
+    --felt-2:#1b2c23;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Sans CJK SC","PingFang SC","Microsoft YaHei",-apple-system,sans-serif;
+    line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:"Noto Serif CJK SC","Songti SC",Georgia,serif}
+  a{color:inherit}
+  ::selection{background:var(--clay-soft)}
+  .wrap{max-width:760px;margin:0 auto;padding:0 28px}
+
+  /* ---------- language visibility ---------- */
+  body[data-lang="en"] .l-zh{display:none}
+  body[data-lang="zh"] .l-en{display:none}
+  body[data-lang="en"]{font-size:15.5px}
+
+  /* ---------- nav ---------- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(246,243,238,.9);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:760px;margin:0 auto;padding:0 28px;height:54px;display:flex;align-items:center;justify-content:space-between}
+  .nav-name{font-weight:700;font-size:15px;letter-spacing:.5px;line-height:1}
+  .nav-name b{color:var(--clay)}
+  .nav-right{display:flex;align-items:center;gap:20px}
+  .nav-links{display:flex;align-items:center;gap:22px;font-size:13.5px;line-height:1}
+  .nav-links a{position:relative;color:var(--sub);text-decoration:none;transition:color .2s;display:inline-flex;align-items:center;height:54px}
+  .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:14px;height:1.5px;background:var(--clay);transform:scaleX(0);transition:transform .2s;transform-origin:left}
+  .nav-links a:hover,.nav-links a.active{color:var(--ink)}
+  .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+  .lang-toggle{display:inline-flex;border:1px solid var(--line);border-radius:30px;overflow:hidden;font-size:12px;line-height:1}
+  .lang-toggle button{background:none;border:none;cursor:pointer;padding:6px 11px;color:var(--faint);font-family:inherit;font-weight:600;transition:all .2s}
+  .lang-toggle button.on{background:var(--clay);color:#fff}
+  @media(max-width:600px){.nav-links{gap:14px;font-size:12.5px}.nav-right{gap:12px}}
+  @media(max-width:430px){.nav-links a:nth-child(n+4){display:none}}
+
+  /* ---------- hero (poker background) ---------- */
+  header.hero{position:relative;background:linear-gradient(150deg,var(--felt-1),var(--felt-2) 55%,#120f0c);color:#f3efe7;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0;opacity:.5}
+  .hero-bg svg{width:100%;height:100%}
+  .hero-scrim{position:absolute;inset:0;z-index:1;background:
+     radial-gradient(120% 90% at 70% 10%,rgba(0,0,0,0) 0%,rgba(10,14,11,.55) 70%),
+     linear-gradient(180deg,rgba(16,28,23,.35) 0%,rgba(13,11,8,.78) 100%)}
+  .hero-content{position:relative;z-index:2;padding:74px 28px 64px;max-width:760px;margin:0 auto}
+  .eyebrow{font-size:12.5px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:18px}
+  h1.name{font-size:60px;line-height:1;font-weight:800;letter-spacing:2px;color:#fbf8f1}
+  h1.name .role{display:block;font-size:15px;letter-spacing:4px;color:rgba(243,239,231,.7);font-weight:500;margin-top:16px;font-family:"Noto Sans CJK SC",sans-serif;text-transform:uppercase}
+  .tagline{font-size:23px;line-height:1.55;margin-top:28px;max-width:30ch;font-weight:600;color:#f3efe7}
+  .tagline em{color:var(--gold);font-style:normal}
+  .hero-meta{margin-top:28px;display:flex;flex-wrap:wrap;gap:9px 24px;font-size:13.5px;color:rgba(243,239,231,.78)}
+  .hero-meta b{color:#fbf8f1;font-weight:600}
+  .hero-suits{margin-top:30px;font-size:18px;letter-spacing:10px;color:rgba(224,177,94,.6)}
+  @media(max-width:560px){h1.name{font-size:40px}.tagline{font-size:19px}}
+
+  /* ---------- section frame ---------- */
+  section.blk{padding:46px 0;border-top:1px solid var(--line)}
+  section.blk:first-of-type{border-top:none}
+  .sec-label{display:flex;align-items:baseline;gap:12px;margin-bottom:24px}
+  .sec-label .no{font-size:13px;color:var(--clay);font-weight:700;letter-spacing:1px}
+  .sec-label h2{font-size:15px;font-weight:700;letter-spacing:1px;color:var(--ink)}
+
+  .lede{font-size:17.5px;line-height:1.9}
+  .lede p{margin-bottom:16px}
+  .lede p:last-child{margin-bottom:0}
+  .lede strong{font-weight:700}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:32px}
+  .stat{border-top:2px solid var(--clay);padding-top:11px}
+  .stat .n{font-size:29px;font-weight:800;line-height:1;letter-spacing:.5px}
+  .stat .n small{font-size:17px;font-weight:700}
+  .stat .t{font-size:12px;color:var(--sub);margin-top:7px;line-height:1.4}
+  @media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr);gap:22px 18px}.stat .n{font-size:25px}}
+
+  /* timeline */
+  .tl-item{position:relative;padding:0 0 24px 30px;border-left:2px solid var(--line)}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2.5px solid var(--clay)}
+  .tl-item.dim::before{border-color:var(--faint)}
+  .tl-when{font-size:12.5px;color:var(--faint);letter-spacing:.5px;font-variant-numeric:tabular-nums}
+  .tl-role{font-size:16.5px;font-weight:700;margin-top:2px}
+  .tl-role .org{color:var(--clay);font-weight:600}
+  .tl-desc{font-size:14px;color:var(--sub);margin-top:5px}
+
+  /* work */
+  .work-item{padding:24px 0;border-bottom:1px solid var(--line)}
+  .work-item:first-child{padding-top:0}
+  .work-item:last-child{border-bottom:none;padding-bottom:0}
+  .work-kicker{font-size:11.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--clay);font-weight:700;margin-bottom:6px}
+  .work-title{font-size:19px;font-weight:700;line-height:1.4}
+  .work-desc{font-size:14.5px;color:var(--sub);margin-top:10px;line-height:1.8}
+  .work-metric{margin-top:13px;display:inline-block;font-size:13.5px;background:var(--clay-soft);color:#7d3318;border-radius:4px;padding:6px 13px;font-weight:600}
+  .work-metric b{color:#5e2410}
+
+  /* capabilities */
+  .caps{display:grid;grid-template-columns:1fr 1fr;gap:22px 32px}
+  .cap h3{font-size:15px;font-weight:700;margin-bottom:4px}
+  .cap h3 .mk{color:var(--clay);margin-right:8px}
+  .cap p{font-size:13.5px;color:var(--sub);line-height:1.7}
+  @media(max-width:560px){.caps{grid-template-columns:1fr;gap:18px}}
+  .toolrow{margin-top:24px;font-size:13.5px}
+  .toolrow > div{margin-top:8px;color:var(--sub)}
+  .toolrow .tl-k{font-weight:700;color:var(--ink)}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .tag{border:1px solid var(--line);background:var(--paper-2);border-radius:30px;padding:4px 13px;font-size:12px;color:var(--sub)}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);background:var(--paper-2)}
+  .foot-in{max-width:760px;margin:0 auto;padding:46px 28px 44px}
+  .foot-cta{font-size:22px;font-weight:700;color:var(--ink);line-height:1.5;letter-spacing:.3px}
+  .foot-lead{font-size:15.5px;color:var(--sub);margin-top:10px;max-width:48ch}
+  .foot-grid{margin-top:28px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 30px}
+  .fc .k{font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:var(--faint);margin-bottom:3px}
+  .fc a,.fc span{font-size:15px;color:var(--ink);text-decoration:none;word-break:break-all}
+  .fc a:hover{color:var(--clay)}
+  .colophon{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  .rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body data-lang="zh">
+
+<nav>
+  <div class="nav-in">
+    <div class="nav-name">Olin <b>Zheng</b></div>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#about"><span class="l-zh">关于</span><span class="l-en">About</span></a>
+        <a href="#path"><span class="l-zh">经历</span><span class="l-en">Path</span></a>
+        <a href="#work"><span class="l-zh">作品</span><span class="l-en">Work</span></a>
+        <a href="#skills"><span class="l-zh">能力</span><span class="l-en">Skills</span></a>
+        <a href="#contact"><span class="l-zh">联系</span><span class="l-en">Contact</span></a>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="language">
+        <button data-set="zh">中</button><button data-set="en">EN</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <svg viewBox="0 0 1200 520" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f7f3ea"/><stop offset="1" stop-color="#e6dcc8"/>
+        </linearGradient>
+      </defs>
+      <!-- scattered playing cards -->
+      <g opacity="0.9">
+        <g transform="translate(120,300) rotate(-18)">
+          <rect width="150" height="210" rx="14" fill="url(#card)"/>
+          <text x="18" y="50" font-family="Georgia,serif" font-size="40" fill="#b3402a">A</text>
+          <text x="60" y="135" font-family="serif" font-size="84" fill="#b3402a">♥</text>
+        </g>
+        <g transform="translate(250,330) rotate(8)">
+          <rect width="150" height="210" rx="14" fill="url(#card)"/>
+          <text x="18" y="50" font-family="Georgia,serif" font-size="40" fill="#1c1c1c">K</text>
+          <text x="60" y="135" font-family="serif" font-size="84" fill="#1c1c1c">♠</text>
+        </g>
+        <g transform="translate(900,250) rotate(14)">
+          <rect width="150" height="210" rx="14" fill="url(#card)"/>
+          <text x="18" y="50" font-family="Georgia,serif" font-size="40" fill="#b3402a">Q</text>
+          <text x="60" y="135" font-family="serif" font-size="84" fill="#b3402a">♦</text>
+        </g>
+        <g transform="translate(1010,300) rotate(-10)">
+          <rect width="150" height="210" rx="14" fill="url(#card)"/>
+          <text x="18" y="50" font-family="Georgia,serif" font-size="40" fill="#1c1c1c">J</text>
+          <text x="62" y="135" font-family="serif" font-size="84" fill="#1c1c1c">♣</text>
+        </g>
+      </g>
+      <!-- poker chips -->
+      <g opacity="0.7">
+        <circle cx="640" cy="150" r="30" fill="none" stroke="#e0b15e" stroke-width="5" stroke-dasharray="10 7"/>
+        <circle cx="700" cy="180" r="30" fill="none" stroke="#cf5b3c" stroke-width="5" stroke-dasharray="10 7"/>
+        <circle cx="580" cy="190" r="30" fill="none" stroke="#dfe6df" stroke-width="5" stroke-dasharray="10 7"/>
+      </g>
+      <!-- faint suit pattern -->
+      <g fill="#ffffff" opacity="0.05" font-family="serif" font-size="60">
+        <text x="430" y="120">♠</text><text x="780" y="430">♥</text><text x="120" y="120">♦</text><text x="980" y="120">♣</text><text x="500" y="470">♣</text>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="eyebrow rv">Product Manager · 10 Years</div>
+    <h1 class="name serif rv">Olin Zheng<span class="role"><span class="l-zh">产品经理 · 增长 · 海外棋牌 · AI 内容</span><span class="l-en">Product · Growth · Card Games · AI Content</span></span></h1>
+    <p class="tagline rv">
+      <span class="l-zh">把模糊的业务目标,拆成<em>能落地、能验收、也能复用</em>的产品。</span>
+      <span class="l-en">Turning vague business goals into products that <em>ship, pass review, and scale</em>.</span>
+    </p>
+    <div class="hero-meta rv">
+      <span class="l-zh">📍 <b>菲律宾 · 马尼拉 BGC</b></span><span class="l-en">📍 <b>Manila BGC, Philippines</b></span>
+      <span class="l-zh">可回国 · 可出差</span><span class="l-en">Open to relocation &amp; travel</span>
+    </div>
+    <div class="hero-suits rv">♠ ♥ ♦ ♣</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="blk" id="about">
+    <div class="sec-label rv"><span class="no">01</span><h2><span class="l-zh">关于我</span><span class="l-en">About</span></h2></div>
+    <div class="lede">
+      <p class="rv l-zh">我从 UI 设计入行,一路做到产品经理。十几年里做过淘宝联盟的导购广告产品(在<strong>阿里妈妈任 P6</strong>),负责过海外棋牌平台的增长与赛事运营,也曾从 0 到 1 创办过一家 AI 内容矩阵公司。</p>
+      <p class="rv l-en">I started in UI design and worked my way up to product management. Over the past decade I've built guided-shopping ad products for the Taobao Alliance (as a <strong>P6 at Alimama</strong>), led growth and tournament operations for an overseas card-game platform, and founded an AI content-matrix company from the ground up.</p>
+
+      <p class="rv l-zh">这些经历让我养成一个习惯:拿到一个含糊的目标,先把它拆成<strong>用户路径、前后台需求、运营流程、验收标准和数据复盘机制</strong>——让团队照着能做、能测、能复盘,而不是停在一份漂亮但没人能落地的原型上。</p>
+      <p class="rv l-en">That gave me a habit: when I get a fuzzy goal, I break it into <strong>user journeys, front- and back-end requirements, operational workflows, acceptance criteria and data-review loops</strong> — so the team can actually build, test and learn from it, instead of stopping at a pretty prototype no one can ship.</p>
+
+      <p class="rv l-zh">最近两年我把精力放在两件事:一是用 AI(Codex / ChatGPT / Claude)把调研、需求、原型说明、验收清单这些重复工作<strong>产品化、模板化、自动化</strong>;二是海外棋牌的赛事活动与 H5/APP 增长体验。我相信好产品经理的价值,不在于会用多少工具,而在于能不能把复杂的事情讲清楚、推下去。</p>
+      <p class="rv l-en">Lately I've focused on two things: using AI (Codex / ChatGPT / Claude) to <strong>productize and automate</strong> the repetitive work of research, requirements, prototype specs and acceptance checklists; and the tournament activities and H5/APP growth experience of overseas card games. A good PM's value isn't the number of tools they use — it's whether they can make complex things clear and move them forward.</p>
+    </div>
+    <div class="stats">
+      <div class="stat rv"><div class="n">10<small class="l-zh">年</small><small class="l-en">y</small></div><div class="t"><span class="l-zh">产品经理经验</span><span class="l-en">in product</span></div></div>
+      <div class="stat rv"><div class="n">3.6×</div><div class="t"><span class="l-zh">J9 站 8 个月月营收增长</span><span class="l-en">J9 8-month revenue growth</span></div></div>
+      <div class="stat rv"><div class="n">19M+</div><div class="t"><span class="l-zh">社媒矩阵总粉丝</span><span class="l-en">total matrix followers</span></div></div>
+      <div class="stat rv"><div class="n">P6</div><div class="t"><span class="l-zh">阿里妈妈产品经理</span><span class="l-en">PM at Alimama</span></div></div>
+    </div>
+  </section>
+
+  <section class="blk" id="path">
+    <div class="sec-label rv"><span class="no">02</span><h2><span class="l-zh">职业经历</span><span class="l-en">Experience</span></h2></div>
+    <div class="tl">
+      <div class="tl-item rv">
+        <div class="tl-when">2025.02 — <span class="l-zh">至今</span><span class="l-en">Present</span></div>
+        <div class="tl-role"><span class="l-zh">产品经理 · </span><span class="l-en">Product Manager · </span><span class="org">GameZone<span class="l-zh">（DIGI Plus 旗下线上棋牌品牌）</span><span class="l-en"> (card-game brand of DIGI Plus)</span></span></div>
+        <div class="tl-desc"><span class="l-zh">负责 Tongits、GTCC、Pusoy、Texas 等品类的赛事活动、线上到线下大赛、赛事中台与权益通用能力,从后台配置到 H5/APP 展示的完整闭环。</span><span class="l-en">Tournament activities and online-to-offline live events for Tongits, GTCC, Pusoy and Texas, plus reusable tournament infrastructure and shared entitlements — the full loop from back-end config to H5/APP experience.</span></div>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-when">2024.03 — 2024.11</div>
+        <div class="tl-role"><span class="l-zh">产品经理 · </span><span class="l-en">Product Manager · </span><span class="org">EraNex</span></div>
+        <div class="tl-desc"><span class="l-zh">推进 AI 内容矩阵项目落地,运营 2.5 万+ 海外社媒账号,矩阵总粉丝体量 1900 万+。</span><span class="l-en">Drove the AI content-matrix project; ran 25,000+ overseas social accounts with 19M+ total followers.</span></div>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-when">2023.03 — 2024.03</div>
+        <div class="tl-role"><span class="l-zh">创始人 / 产品负责人 · </span><span class="l-en">Founder / Head of Product · </span><span class="org">AIOG</span></div>
+        <div class="tl-desc"><span class="l-zh">GPT-3.5 上线后创立 AI 内容生产 + 自媒体矩阵引流工作室,从场地、执照到生产与风控流程一手搭建。</span><span class="l-en">Founded an AI content + social-matrix studio after GPT-3.5 launched — built everything from premises and licensing to production and risk-control processes.</span></div>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-when">2021.03 — 2023.02</div>
+        <div class="tl-role"><span class="l-zh">产品 / 运营 / 站长 · </span><span class="l-en">Product / Ops / Site Lead · </span><span class="org">AG-Intech-TCBS</span></div>
+        <div class="tl-desc"><span class="l-zh">负责 J9 印度站;在无新增市场预算下,通过裂变与运营体系优化,使月 GGR 从 29K 增至 106K。</span><span class="l-en">Ran the J9 India site; with no added marketing budget, grew monthly GGR from 29K to 106K through referral loops and operations.</span></div>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-when">2020.05 — 2021.03</div>
+        <div class="tl-role"><span class="l-zh">产品经理 · </span><span class="l-en">Product Manager · </span><span class="org">AG-<span class="l-zh">创新工坊</span><span class="l-en">Innovation Studio</span></span></div>
+        <div class="tl-desc"><span class="l-zh">负责四方支付系统与 Les Ambassadeurs Online 线上平台需求与后台配置。</span><span class="l-en">Owned requirements and back-end config for a payment system and the Les Ambassadeurs Online platform.</span></div>
+      </div>
+      <div class="tl-item rv dim">
+        <div class="tl-when">2017.09 — 2019.06</div>
+        <div class="tl-role"><span class="l-zh">产品经理 P6 · </span><span class="l-en">Product Manager (P6) · </span><span class="org"><span class="l-zh">阿里妈妈</span><span class="l-en">Alimama</span></span></div>
+        <div class="tl-desc"><span class="l-zh">淘宝联盟下游导购商需求调研、提案评审、上下游协同与效果反馈。</span><span class="l-en">Taobao Alliance guided-shopping requirements, proposal reviews, cross-team alignment and performance reporting.</span></div>
+      </div>
+      <div class="tl-item rv dim">
+        <div class="tl-when">2015.07 — 2017.09</div>
+        <div class="tl-role"><span class="l-zh">产品经理 · </span><span class="l-en">Product Manager · </span><span class="org"><span class="l-zh">成都大淘客科技</span><span class="l-en">Chengdu Dataoke</span></span></div>
+        <div class="tl-desc"><span class="l-zh">竞品分析、需求挖掘、产品生态搭建、交互原型与用户反馈迭代。</span><span class="l-en">Competitive analysis, requirements, product-ecosystem design, prototypes and feedback-driven iteration.</span></div>
+      </div>
+      <div class="tl-item rv dim">
+        <div class="tl-when">2012.09 — 2015.06</div>
+        <div class="tl-role"><span class="l-zh">UI 设计 / 产品助理 · </span><span class="l-en">UI Design / Product Assistant · </span><span class="org"><span class="l-zh">成都天蝎高科技</span><span class="l-en">Chengdu Scorpio Tech</span></span></div>
+        <div class="tl-desc"><span class="l-zh">从 UI 设计与产品助理起步,参与功能与业务流程设计、设计稿输出。</span><span class="l-en">Started in UI design and product support — feature and workflow design, and visual deliverables.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blk" id="work">
+    <div class="sec-label rv"><span class="no">03</span><h2><span class="l-zh">精选作品</span><span class="l-en">Selected Work</span></h2></div>
+    <div class="work">
+
+      <div class="work-item rv">
+        <div class="work-kicker"><span class="l-zh">海外棋牌 · 线上到线下</span><span class="l-en">Card Games · Online-to-Offline</span></div>
+        <div class="work-title"><span class="l-zh">GTCC 菲律宾本土大型线下赛事运营</span><span class="l-en">GTCC — Major Live Tournaments in the Philippines</span></div>
+        <div class="work-desc"><span class="l-zh">在 GameZone 任内承接 <strong>4 次 GTCC 大型菲律宾本土线下赛</strong>,打通"线上选拔 → 线下决赛"的完整链路:Primer、Weekly、Monthly、Semi-final、Online Final 到 Offline Final,单届赛制持续约 2 个月。负责各关键节点的产品交付——赛前预告、赛中棋牌门票与赛事包装引导选拔流程、线下赛前专题页推广与观众招募、线下结束后的赛果公示与品牌包装链路。</span><span class="l-en">Ran <strong>4 large GTCC live tournaments</strong> in the Philippines during my time at GameZone, connecting the full "online qualifier → live final" path: Primer, Weekly, Monthly, Semi-final, Online Final to Offline Final — about a 2-month cycle per edition. Owned product delivery at every key node: pre-event teasers, in-game tickets and tournament packaging that guide players through qualification, pre-event landing pages and audience recruitment, and post-event results announcements and brand packaging.</span></div>
+        <div class="work-metric"><span class="l-zh"><b>4 场</b> GTCC 本土线下赛 · 线上选拔到线下决赛 · 单届约 2 个月</span><span class="l-en"><b>4</b> live GTCC events · online-to-offline finals · ~2-month cycle</span></div>
+      </div>
+
+      <div class="work-item rv">
+        <div class="work-kicker"><span class="l-zh">平台基建 · 跨团队协同</span><span class="l-en">Platform · Cross-team</span></div>
+        <div class="work-title"><span class="l-zh">赛事中台与棋牌权益通用能力</span><span class="l-en">Tournament Platform & Shared Card-Game Entitlements</span></div>
+        <div class="work-desc"><span class="l-zh">把赛事能力沉淀为高可复用基建——赛事视觉管理配置、通过 OMS 内部配置实现 APP Push / SMS / 邮件的<strong>业务事件触发自动推送</strong>、模板配置能力与外部服务接入。进一步推进门票类权益接入集团营销系统,支撑兄弟项目<strong>通过 API 调用</strong>;期间协调厅方、营销中台、用户域、游戏域与客户端前后端,多项目多团队协同,构建棋牌业务权益的通用能力,让各团队能轻松调用、快速发布。</span><span class="l-en">Turned tournament capabilities into highly reusable infrastructure — visual-asset configuration, <strong>event-triggered auto-push</strong> for APP Push / SMS / email built into OMS's internal config, template configuration, and external-service integration. Pushed ticket-type entitlements into the group's marketing system so sibling projects can <strong>call them via API</strong>; coordinated the venue side, marketing platform, user domain, game domain and client/back-end teams to build shared entitlement capabilities — so any team can plug in and ship fast.</span></div>
+        <div class="work-metric"><span class="l-zh">OMS 事件触发自动推送 · 权益 API 复用于兄弟项目 · 5+ 域/团队协同</span><span class="l-en">OMS event-triggered push · entitlement APIs reused across projects · 5+ domains aligned</span></div>
+      </div>
+
+      <div class="work-item rv">
+        <div class="work-kicker"><span class="l-zh">增长 · 热配置活动基建</span><span class="l-en">Growth · Hot-config Activities</span></div>
+        <div class="work-title"><span class="l-zh">PVP 系列活动基建与数据漏斗</span><span class="l-en">PVP Activity Infrastructure & Conversion Funnel</span></div>
+        <div class="work-desc"><span class="l-zh">围绕 PVP 构建了一整套<strong>高可复用、可热配置</strong>的活动基建,覆盖迎新、促转化、拉大场等完整系列;并基于此建立数据统计漏斗模型,持续追踪活动效果、反哺迭代。</span><span class="l-en">Built a full suite of <strong>highly reusable, hot-configurable</strong> activity infrastructure around PVP — covering onboarding, conversion and "big-table" pushes as a complete series — plus a funnel-based analytics model on top to continuously track performance and feed iteration.</span></div>
+        <div class="work-metric"><span class="l-zh">迎新 / 促转化 / 拉大场系列 · 热配置可复用 · 漏斗模型追踪</span><span class="l-en">onboarding / conversion / big-table series · hot-configurable · funnel tracking</span></div>
+      </div>
+
+      <div class="work-item rv">
+        <div class="work-kicker"><span class="l-zh">AI 内容 · 矩阵自动化</span><span class="l-en">AI Content · Matrix Automation</span></div>
+        <div class="work-title"><span class="l-zh">AI 内容生产与社媒矩阵</span><span class="l-en">AI Content Production & Social Matrix</span></div>
+        <div class="work-desc"><span class="l-zh">围绕群控设备、账号人设、热点抓取、AI 文案与短视频生成、矩阵分发,搭建内容引流产品方案;并建立从账号采购到客户交付的 ToB 服务闭环。不是单点用 AI,而是把内容生产、分发和复盘整合成一门能交付的生意。</span><span class="l-en">Built a content-acquisition product around device farms, account personas, trend scraping, AI copy and short-video generation, and matrix distribution — plus a B2B service loop from account sourcing to client delivery. Not AI as a gimmick, but production, distribution and review integrated into a deliverable business.</span></div>
+        <div class="work-metric"><span class="l-zh">运营 <b>2.5 万+</b> 海外社媒账号 · 3 个月号均涨粉 800+ · 总粉丝 <b>1900 万+</b></span><span class="l-en">ran <b>25,000+</b> overseas accounts · +800 followers/account in 3 months · <b>19M+</b> total</span></div>
+      </div>
+
+      <div class="work-item rv">
+        <div class="work-kicker"><span class="l-zh">增长 · 0 预算运营</span><span class="l-en">Growth · Zero-budget Ops</span></div>
+        <div class="work-title"><span class="l-zh">J9 印度站增长与运营闭环</span><span class="l-en">J9 India — Growth & Operations Loop</span></div>
+        <div class="work-desc"><span class="l-zh">接任站长后,在 0 市场经费的条件下,靠 VIP 体系、信任体系、优惠体系、裂变路径与渠道复盘,一点点挖出运营空间;同时管着客服、运营、财务流程。</span><span class="l-en">As site lead with zero marketing budget, opened up room through VIP, trust and promo systems, referral loops and channel reviews — while also managing support, operations and finance.</span></div>
+        <div class="work-metric"><span class="l-zh">8 个月月 GGR <b>29K → 106K</b> · 约 3.6 倍增长</span><span class="l-en">monthly GGR <b>29K → 106K</b> in 8 months · ~3.6× growth</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="blk" id="skills">
+    <div class="sec-label rv"><span class="no">04</span><h2><span class="l-zh">能力与工具</span><span class="l-en">Skills & Tools</span></h2></div>
+    <div class="caps">
+      <div class="cap rv"><h3><span class="mk">/</span><span class="l-zh">AI Coding 与新质生产力</span><span class="l-en">AI Coding & Productivity</span></h3><p><span class="l-zh">用 Codex / ChatGPT / Claude 辅助需求拆解、资料整理、脚本化检查与 PRD/验收清单生成,把重复工作自动化、模板化。</span><span class="l-en">Use Codex / ChatGPT / Claude to assist requirement breakdown, research, scripted checks and PRD/acceptance-list generation — automating and templating repetitive work.</span></p></div>
+      <div class="cap rv"><h3><span class="mk">/</span><span class="l-zh">游戏与活动增长</span><span class="l-en">Game & Activity Growth</span></h3><p><span class="l-zh">熟悉拉新—转化—留存—裂变—召回全链路;设计赛事入口、活动激励、优惠体系、VIP/信任体系与成就体系。</span><span class="l-en">Fluent across acquisition–conversion–retention–referral–reactivation; design tournament entries, incentives, promo and VIP/trust and achievement systems.</span></p></div>
+      <div class="cap rv"><h3><span class="mk">/</span><span class="l-zh">前后台闭环设计</span><span class="l-en">End-to-end System Design</span></h3><p><span class="l-zh">从 OMS 配置、状态流转、字段规则到 H5/APP 展示与异常兜底,建立完整可验收的需求闭环。</span><span class="l-en">From OMS config, state flows and field rules to H5/APP display and edge-case handling — a complete, verifiable requirements loop.</span></p></div>
+      <div class="cap rv"><h3><span class="mk">/</span><span class="l-zh">交付与团队管理</span><span class="l-en">Delivery & Team Leadership</span></h3><p><span class="l-zh">市场调研、竞品分析、PRD、原型、需求宣讲、开发跟进、验收、SOP 与运营培训;做过站长与创业者,贯通产运销客协作。</span><span class="l-en">Research, competitive analysis, PRDs, prototypes, requirement walkthroughs, dev follow-through, acceptance, SOPs and ops training; as a site lead and founder, fluent across product, ops, marketing and support.</span></p></div>
+    </div>
+    <div class="toolrow rv">
+      <div><span class="tl-k"><span class="l-zh">产品工具 ——</span><span class="l-en">Product ——</span></span> Figma, Axure, PRD, <span class="l-zh">流程图、状态机、字段说明、后台配置说明、验收清单、培训手册</span><span class="l-en">flowcharts, state machines, field specs, config docs, acceptance lists, training manuals</span></div>
+      <div><span class="tl-k"><span class="l-zh">AI 工具 ——</span><span class="l-en">AI ——</span></span> Codex, ChatGPT, Claude</div>
+      <div><span class="tl-k"><span class="l-zh">业务方法 ——</span><span class="l-en">Methods ——</span></span> <span class="l-zh">用户旅程、增长漏斗、激励体系、运营 SOP、数据复盘、交付节奏管理</span><span class="l-en">user journeys, growth funnels, incentive design, ops SOPs, data review, delivery cadence</span></div>
+    </div>
+    <div class="tags rv">
+      <span class="tag"><span class="l-zh">增长漏斗</span><span class="l-en">Growth funnel</span></span>
+      <span class="tag"><span class="l-zh">赛事活动</span><span class="l-en">Tournaments</span></span>
+      <span class="tag"><span class="l-zh">OMS 配置</span><span class="l-en">OMS config</span></span>
+      <span class="tag"><span class="l-zh">线上到线下</span><span class="l-en">Online-to-offline</span></span>
+      <span class="tag"><span class="l-zh">权益中台</span><span class="l-en">Entitlement platform</span></span>
+      <span class="tag"><span class="l-zh">AI 内容矩阵</span><span class="l-en">AI content matrix</span></span>
+      <span class="tag"><span class="l-zh">海外棋牌</span><span class="l-en">Overseas card games</span></span>
+    </div>
+  </section>
+
+</div>
+
+<footer id="contact">
+  <div class="foot-in">
+    <div class="sec-label rv"><span class="no">05</span><h2><span class="l-zh">联系</span><span class="l-en">Contact</span></h2></div>
+    <p class="foot-cta serif rv"><span class="l-zh">聊聊产品,或一次合作。</span><span class="l-en">Let's talk product — or work together.</span></p>
+    <p class="foot-lead rv"><span class="l-zh">如果你在找一个能把业务想清楚、把需求写明白、也愿意动手把流程跑通的产品经理,欢迎随时找我。</span><span class="l-en">If you're looking for a PM who can think the business through, write the requirements clearly, and roll up their sleeves to make the process work — reach out anytime.</span></p>
+    <div class="foot-grid">
+      <div class="fc rv"><div class="k"><span class="l-zh">邮箱</span><span class="l-en">Email</span></div><a href="mailto:kakapmer@gmail.com">kakapmer@gmail.com</a></div>
+      <div class="fc rv"><div class="k"><span class="l-zh">电话 / WhatsApp</span><span class="l-en">Phone / WhatsApp</span></div><span>+63 968 271 0101</span></div>
+      <div class="fc rv"><div class="k">Telegram</div><span>@olinzheng</span></div>
+      <div class="fc rv"><div class="k"><span class="l-zh">所在地</span><span class="l-en">Location</span></div><span class="l-zh">菲律宾 · 马尼拉 BGC</span><span class="l-en">Manila BGC, Philippines</span></div>
+      <div class="fc rv"><div class="k"><span class="l-zh">Figma 作品集</span><span class="l-en">Figma portfolio</span></div><a href="https://www.figma.com/design/ATB2JBSQIvb4ZFsJ4zqUEq/Olin?m=auto&amp;t=GqV2YaZM4n8TGn4K-6" target="_blank" rel="noopener">figma.com/…/Olin</a></div>
+      <div class="fc rv"><div class="k"><span class="l-zh">Axure 作品集</span><span class="l-en">Axure portfolio</span></div><a href="https://kc71dk.axshare.com/" target="_blank" rel="noopener">kc71dk.axshare.com</a></div>
+    </div>
+    <div class="colophon">
+      <span>© 2026 Olin Zheng</span>
+      <span><span class="l-zh">江西科技学院 · 专科 · 2009–2012</span><span class="l-en">Jiangxi University of Technology · Associate · 2009–2012</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---------- i18n ----------
+  function setLang(l){
+    document.body.setAttribute('data-lang',l);
+    document.documentElement.lang = (l==='zh'?'zh-CN':'en');
+    document.querySelectorAll('.lang-toggle button').forEach(b=>b.classList.toggle('on',b.dataset.set===l));
+    try{localStorage.setItem('olin_lang',l);}catch(e){}
+  }
+  (function(){
+    var saved=null; try{saved=localStorage.getItem('olin_lang');}catch(e){}
+    var nav=(navigator.language||'en').toLowerCase();
+    var lang = saved || (nav.indexOf('zh')===0 ? 'zh' : 'en');
+    setLang(lang);
+  })();
+  document.querySelectorAll('.lang-toggle button').forEach(b=>{
+    b.addEventListener('click',()=>setLang(b.dataset.set));
+  });
+
+  // ---------- gentle reveal ----------
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rv').forEach(function(el,i){el.style.transitionDelay=(Math.min(i%6,5)*40)+'ms';io.observe(el);});
+
+  // ---------- active nav ----------
+  var links=[].slice.call(document.querySelectorAll('.nav-links a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  var nio=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){var id='#'+e.target.id;links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')===id);});}
+    });
+  },{threshold:.25,rootMargin:'-20% 0px -60% 0px'});
+  secs.forEach(function(s){if(s)nio.observe(s);});
+</script>
+</body>
+</html>
